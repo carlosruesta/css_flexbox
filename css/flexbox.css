@@ -1,0 +1,203 @@
+/* CABECALHO */
+
+/* aplicando flexbox nos itens do cabecalho */
+.cabecalhoPrincipal .container {
+	/* aqui declara que vamos usar o flexbox
+		tem que ser no pai dos itens que pretendo organizar */
+	display: flex;
+
+	/* alinhar verticalmente ao centro */
+	align-items: center;
+
+	/* reposicionar os itens no cabecalho sem precisar de numeros mágicos*/
+	justify-content: space-between;
+}
+
+/* Para organizar os botões do menu */
+.cabecalhoPrincipal-nav {
+	display: flex;      /* os botões já tem um margin-left vindo do style.css */
+}
+
+
+/* RODAPÉ */
+
+.rodapePrincipal-patrocinadores .container {
+	display: flex;
+
+	/* space between justifica deixando espaçoentre os elementos, mas não preeenche as laterais dos ultimos elementos */
+	justify-content: space-between;
+}
+
+.rodapePrincipal-contatoForm {
+	width: 25%;
+}
+
+.rodapePrincipal-patrocinadores-list {
+	display: flex;
+	align-items: center;
+
+	/* space around justificou deixando espaço ao redor dos elementos */
+	justify-content: space-around;
+
+	width: 70%;
+	margin-right: 5% ;
+}
+
+/* arruma o tamanho dos itens que estão dentro do flex... os elementos ficam com a mesma altura */
+.rodapePrincipal-contatoForm-fieldset {
+	display: flex;
+}
+
+/* MAPA DE CURSOS */
+
+.rodapePrincipal-navMap-list {
+	display: flex;
+
+	/* Permite mudar a direção do flex. Por padrão a direcao do flex é na horizontal por linhas (row) */
+	flex-direction: column;
+
+	/* indica que o fluxo seja cortado e respeite a altura de uma determinada linha */
+	flex-wrap: wrap;
+
+	/* exite ainda a propriedade flex-flow que junta as 2 anteriores numa só */
+	/*
+		flex-flow: column wrap;
+	 */
+
+	/* define a altura maxima de um */
+	height: 250px;
+}
+
+/* CONTEUDO PRINCIPAL */
+
+/* com o flex box conseguimos */
+.conteudoPrincipal-cursos {
+	display: flex;
+	flex-wrap: wrap;
+	/*justify-content: space-around;*/
+}
+
+/* isso permite alterar o comportamento dos links dando tamanho neles por volta de 25%
+   para que entrem 4 elementos por linha */
+.conteudoPrincipal-cursos-link {
+	width: 23%;
+	margin: 1%;
+}
+
+/* para tirar a margin direita dos elementos multiplos de 4: 4, 8,12, etc */
+.conteudoPrincipal-cursos-link:nth-child(4n) {
+	margin-right: 0;
+}
+
+/* para tirar a margin esquerda dos elementos 1, 5, 9, 13, etc*/
+.conteudoPrincipal-cursos-link:nth-child(4n+1) {
+	margin-left: 0;
+}
+
+/* VIDEO E VANTAGENS DO ALURINHA */
+
+.videoSobre .container {
+	display: flex;
+}
+
+.videoSobre-sobre {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+
+	/* FLEX-GROW serve para fazer com que o item cresça
+		dentro do flexbox que ele se encontra
+	*/
+	flex-grow: 2;
+
+}
+
+.videoSobre-sobre-list {
+	flex-grow: 1;
+}
+
+.videoSobre-video {
+	flex-grow: 1;
+
+	/* Com o flex-shrink o item diminue duas vezes mais que os outros elementos
+		Isso se faz necessário porque o video está diminuindo menos que o item do flexbox
+	*/
+
+
+}
+
+/* PARA MOBILE */
+
+@media(max-width: 768px) {
+
+
+	/* CABECALHO */
+	.cabecalhoPrincipal .container {
+		flex-direction: column;
+		align-items: initial;
+		text-align: center;
+	}
+
+	.cabecalhoPrincipal-nav {
+		flex-direction: column;
+	}
+
+	/* CONTEUDO */
+	.conteudoPrincipal-cursos {
+		/*display: flex;*/
+		flex-direction: column;
+		/*flex-wrap: nowrap;*/
+		/*justify-content: space-around;*/
+	}
+
+	.conteudoPrincipal-cursos-link {
+		width: 100%;
+		margin-bottom: 1%;
+	}
+
+	/* MAPA DE CURSOS */
+	.rodapePrincipal-navMap-list {
+		height: auto;
+	}
+
+	/* RODAPE */
+	.rodapePrincipal-patrocinadores .container {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.rodapePrincipal-contatoForm {
+		width: 100%;
+	}
+
+	.rodapePrincipal-patrocinadores-list {
+		margin: 0;
+		width: 100%;
+	}
+
+	.rodapePrincipal-contatoForm-fieldset {
+		justify-content: center
+	}
+
+	/* ORDER muda a ordem dos elementos, só é atribuido a um item do flexbox
+		neste caso estamos reorganizando os botoes do menu e colocamos como
+		primeira opção o link de downloado do APP no */
+	.cabecalhoPrincipal-nav-link-app {
+		order: -1;
+	}
+
+	/* VIDEO E VANTAGENS */
+	.videoSobre .container {
+		flex-direction: column;
+	}
+
+	.videoSobre-video {
+		flex-grow: 1;
+		flex-shrink: 2;
+	}
+
+	.videoSobre-video {
+		margin: 0 auto;
+	}
+
+}
